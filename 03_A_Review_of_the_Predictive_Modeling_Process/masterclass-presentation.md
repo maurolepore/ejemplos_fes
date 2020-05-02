@@ -1,0 +1,42 @@
+R Notebook
+================
+
+## 3 A Review of the Predictive Modeling Process
+
+<http://www.feat.engineering/review-predictive-modeling-process.html>
+
+## Covers how to
+
+  - measure model performance
+
+  - use data well (e.g. splitting and resampling)
+
+  - tune models
+
+  - compare model performance
+
+## Uses data
+
+  - OkCupid Profile Data
+
+  - Ames housing price
+
+## OkCupid Profile Data
+
+<https://github.com/rudeboybert/JSE_OkCupid>
+
+Goal: Predict whether a person’s works in science, technology,
+engineering, and math (STEM).
+
+  - 50 000 profiles in San Francisco, USA
+
+  - Most data is categorical.
+    
+      - They converted it to dummy variables.
+
+  - STEM workers are infrequent (18.5%).
+    
+      - They “down-sampled” to ensure each class (e.g. STEM) has equal
+        number of profiles.
+
+## Next
