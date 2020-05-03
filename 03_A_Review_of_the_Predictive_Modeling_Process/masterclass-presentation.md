@@ -47,7 +47,9 @@ engineering, and math (STEM).
 
 ## Root Mean Squared Error (RMSE)
 
-  - observations vs. pridictions: average distance
+**Spoiler: Use it\!**
+
+  - actual vs. predicted: average distance
 
   - \[original\]
 
@@ -55,7 +57,9 @@ engineering, and math (STEM).
 
 ## Coefficient of determination (R^2)
 
-  - observations vs. pridictions: (standard correlation)^2
+**Spoiler: Don’t use it; prefer RMSE\!**
+
+  - actual vs. predicted: (standard correlation)^2
 
 ## Coefficient of determination (R^2): Pro
 
@@ -70,27 +74,30 @@ For linear models:
 
 ## Coefficient of determination (R^2): Con
 
-  - can show very optimistic results when the outcome has large
-    variance.
+  - can show very optimistic results when the y has large variance.
 
-  - a handful of far predictions can artificially increase R^2.
+  - a handful of far predicted can artificially increase R^2.
 
   - Measures correlation not accuracy. (Main problem.)
 
 ## R^2 Measures correlation not accuracy
 
-> a model could produce pridictions values that have a strong linear
-> relationship with the observations values but the pridictions values
-> do not conform to the 45-degree line of agreement.
+> a model could produce predicted values that have a strong linear
+> relationship with the actual values but the predicted values do not
+> conform to the 45-degree line of agreement.
 
 ## R^2 Measures correlation not accuracy
 
-> E.g. when a model under-predicts at one extreme of the outcome and
-> overpredicts at the other extreme of the outcome.
+> E.g. when a model under-predicts at one extreme of the y and
+> overpredicts at the other extreme of the y.
 
 ## R^2 problem: book example
 
+(I don’t get it)
+
 <img src=http://i.imgur.com/lMFSHw2.png width=760>
+
+# Appendix
 
 ## R^2 problem: my example
 
@@ -105,10 +112,10 @@ library(tidyverse)
 #> x dplyr::filter() masks stats::filter()
 #> x dplyr::lag()    masks stats::lag()
 
-observations <- tibble::tibble(x = 1:10, outcome = 1:10)
+actual <- tibble::tibble(x = 1:10, y = 1:10)
 
-p <- ggplot(observations, aes(x, outcome)) + 
-  geom_point(data = observations) +
+p <- ggplot(actual, aes(x, y)) + 
+  geom_point(data = actual) +
   geom_abline()
 p
 ```
@@ -116,8 +123,8 @@ p
 ![](masterclass-presentation_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
 ``` r
-pridictions <- tibble::tribble(
-  ~x, ~outcome,
+predicted <- tibble::tribble(
+  ~x, ~y,
   # under-predict
   0,   2,  
   1,   3,
@@ -128,7 +135,38 @@ pridictions <- tibble::tribble(
   10,   8,
 )
 
-p + geom_point(data = pridictions, color = "red")
+p + geom_point(data = predicted, color = "red")
 ```
 
 ![](masterclass-presentation_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+
+``` r
+compare <- inner_join(
+  actual, predicted, 
+  by = "x", 
+  suffix = c("_actual", "_predicted")
+)
+
+compare
+#> # A tibble: 5 x 3
+#>       x y_actual y_predicted
+#>   <dbl>    <int>       <dbl>
+#> 1     1        1           3
+#> 2     2        2           4
+#> 3     8        8           6
+#> 4     9        9           7
+#> 5    10       10           8
+```
+
+``` r
+compare %>% 
+  ggplot(aes(y_actual, y_predicted)) +
+  xlim(0, 10) +
+  ylim(0, 10) +
+  geom_abline(slope = 1) +
+  geom_point() +
+  geom_smooth(method = "lm")
+#> `geom_smooth()` using formula 'y ~ x'
+```
+
+![](masterclass-presentation_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
