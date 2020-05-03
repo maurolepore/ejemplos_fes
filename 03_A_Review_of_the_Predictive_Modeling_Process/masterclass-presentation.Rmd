@@ -11,13 +11,13 @@ http://www.feat.engineering/review-predictive-modeling-process.html
 
 ## Covers how to
 
-* measure model performance
+1 measure model performance
 
-* use data well (e.g. splitting and resampling)
+2 use data well (e.g. splitting and resampling)
 
-* tune models
+3 tune models
 
-* compare model performance
+4 compare model performance
 
 ## Uses data
 
@@ -25,25 +25,32 @@ http://www.feat.engineering/review-predictive-modeling-process.html
 
 * Ames housing price
 
-## OkCupid Profile Data
-
-<https://github.com/rudeboybert/JSE_OkCupid>
-
-Goal: Predict whether a person's works in science, technology, engineering, and math (STEM).
-
-* 50 000 profiles in San Francisco, USA
-
-* Most data is categorical.
-    * They converted it to dummy variables.
-
-* STEM workers are infrequent (18.5%).
-    * They "down-sampled" to ensure each class (e.g. STEM) has equal number of profiles.
-    
 ## 3.2 Measuring Performance
 
 <http://www.feat.engineering/measuring-performance.html>
 
 ## Metrics > regression > numeric
+
+* Root Mean Squared Error (RMSE)
+
+* Coefficient of determination (R^2)
+
+__Spoiler: Both very sensitive to extreeme values__
+
+* Good to predict the rank of the response
+
+* Not so good to predict the response itself
+
+Robust approaches:
+
+* transform the data to reduce the impact of extreeme values (e.g. rank order)
+
+
+Not covered, just mentioned: 
+
+* median absolute deviation (MAD) 
+
+* absolute error.
 
 ## Root Mean Squared Error (RMSE)
 
@@ -151,3 +158,18 @@ compare %>%
   geom_smooth(method = "lm")
 ```
 
+
+
+## Data: OkCupid Profile Data
+
+<https://github.com/rudeboybert/JSE_OkCupid>
+
+Goal: Predict whether a person's works in science, technology, engineering, and math (STEM).
+
+* 50 000 profiles in San Francisco, USA
+
+* Most data is categorical.
+    * They converted it to dummy variables.
+
+* STEM workers are infrequent (18.5%).
+    * They "down-sampled" to ensure each class (e.g. STEM) has equal number of profiles.
