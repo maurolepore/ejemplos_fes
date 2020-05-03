@@ -1,35 +1,44 @@
 ---
-title: "R Notebook"
+title: "Chapter 3"
+author: "Mauro"
 output: github_document
 ---
 
+# A Review of the Predictive Modeling Process
+
+<http://www.feat.engineering/review-predictive-modeling-process.html>
+
+## Overview
+
+### 1. Measure model performance
+
+#### 1.1. Numeric variables
+
+Measure regression between observed and predicted outcome
+
+* RMSE: Root Mean Squared Error
+
+* R^2: Coefficient of determination
+
+#### 1.2. Discrete variables: Classification
+
+* Black or white
+
+* Probability
+
+### 2. Use data well (e.g. splitting and resampling)
+
+### 3. Tune models
+
+### 4. Compare model performance
 
 
-## 3 A Review of the Predictive Modeling Process
 
-http://www.feat.engineering/review-predictive-modeling-process.html
+# Measuring performance
 
-## Covers how to
+# Measuring performance of Numeric variables
 
-1 measure model performance
-
-2 use data well (e.g. splitting and resampling)
-
-3 tune models
-
-4 compare model performance
-
-## Uses data
-
-* OkCupid Profile Data
-
-* Ames housing price
-
-## 3.2 Measuring Performance
-
-<http://www.feat.engineering/measuring-performance.html>
-
-## Metrics > regression > numeric
+##  Measuring performance: Numeric variables
 
 * Root Mean Squared Error (RMSE)
 
@@ -52,7 +61,7 @@ Not covered, just mentioned:
 
 * absolute error.
 
-## Root Mean Squared Error (RMSE)
+## RMSE | Root Mean Squared Error
 
 __Spoiler: Use it!__
 
@@ -62,13 +71,13 @@ __Spoiler: Use it!__
 
 * Good -> RMSE ~ 0
 
-## Coefficient of determination (R^2)
+## R^2 | Coefficient of determination
 
 __Spoiler: Don't use it; prefer RMSE!__
 
 * actual vs. predicted: (standard correlation)^2
 
-## Coefficient of determination (R^2): Pro
+## R^2 | Coefficient of determination: Pro
 
 For linear models:
 
@@ -78,7 +87,7 @@ For linear models:
     * Good -> R^2 ~ 1
     * Bad -> R^2 ~ 0
 
-## Coefficient of determination (R^2): Con
+## R^2 | Coefficient of determination: Con
 
 * can show very optimistic results when the y has large variance. 
 
@@ -106,6 +115,47 @@ For linear models:
 
 
 
+
+
+## 
+
+
+
+# Measuring performance of discrete variables
+
+## Measuring performance of discrete variables
+
+Confusion matrix
+
+<img src=http://i.imgur.com/BzD94hW.png width=400>
+
+### Balanced: Accuracy
+
+Proportion of correctly predicted = correct / total
+
+### Imbalanced: Kappa
+
+Normalizes the error rate to what would be expected by chance. 
+
+### Mozaic plot
+
+<img src=http://i.imgur.com/sWYDjOC.png width=760>
+
+### 2 classes
+
+#### Hard classes (1 or 0)
+
+* Sensitivity (#1~1 / #1) & Specificity (#0~0 / #0)
+
+* Precision (#1~1 / #~1) & recall = Sensitivity
+
+ASK: Mentions Bayesian statistics in "hard classes", why?
+
+#### Soft classes (probability or 1)
+
+<img src=http://i.imgur.com/KTtXeEH.png width=760>
+
+### ROC considers all possible cutoffs (see mozaic plot)
 
 # Appendix 
 
@@ -160,16 +210,3 @@ compare %>%
 
 
 
-## Data: OkCupid Profile Data
-
-<https://github.com/rudeboybert/JSE_OkCupid>
-
-Goal: Predict whether a person's works in science, technology, engineering, and math (STEM).
-
-* 50 000 profiles in San Francisco, USA
-
-* Most data is categorical.
-    * They converted it to dummy variables.
-
-* STEM workers are infrequent (18.5%).
-    * They "down-sampled" to ensure each class (e.g. STEM) has equal number of profiles.

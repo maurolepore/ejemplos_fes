@@ -1,49 +1,40 @@
-R Notebook
+Chapter 3
 ================
+Mauro
 
-## 3 A Review of the Predictive Modeling Process
+# A Review of the Predictive Modeling Process
 
 <http://www.feat.engineering/review-predictive-modeling-process.html>
 
-## Covers how to
+## Overview
 
-1 measure model performance
+### 1\. Measure model performance
 
-2 use data well (e.g. splitting and resampling)
+#### 1.1. Numeric variables
 
-3 tune models
+Measure regression between observed and predicted outcome
 
-4 compare model performance
+  - RMSE: Root Mean Squared Error
 
-## Uses data
+  - R^2: Coefficient of determination
 
-  - OkCupid Profile Data
+#### 1.2. Discrete variables: Classification
 
-  - Ames housing price
+  - Black or white
 
-## OkCupid Profile Data
+  - Probability
 
-<https://github.com/rudeboybert/JSE_OkCupid>
+### 2\. Use data well (e.g. splitting and resampling)
 
-Goal: Predict whether a person’s works in science, technology,
-engineering, and math (STEM).
+### 3\. Tune models
 
-  - 50 000 profiles in San Francisco, USA
+### 4\. Compare model performance
 
-  - Most data is categorical.
-    
-      - They converted it to dummy variables.
+# Measuring performance
 
-  - STEM workers are infrequent (18.5%).
-    
-      - They “down-sampled” to ensure each class (e.g. STEM) has equal
-        number of profiles.
+# Measuring performance of Numeric variables
 
-## 3.2 Measuring Performance
-
-<http://www.feat.engineering/measuring-performance.html>
-
-## Metrics \> regression \> numeric
+## Measuring performance: Numeric variables
 
   - Root Mean Squared Error (RMSE)
 
@@ -66,7 +57,7 @@ Not covered, just mentioned:
 
   - absolute error.
 
-## Root Mean Squared Error (RMSE)
+## RMSE | Root Mean Squared Error
 
 **Spoiler: Use it\!**
 
@@ -76,13 +67,13 @@ Not covered, just mentioned:
 
   - Good -\> RMSE \~ 0
 
-## Coefficient of determination (R^2)
+## R^2 | Coefficient of determination
 
 **Spoiler: Don’t use it; prefer RMSE\!**
 
   - actual vs. predicted: (standard correlation)^2
 
-## Coefficient of determination (R^2): Pro
+## R^2 | Coefficient of determination: Pro
 
 For linear models:
 
@@ -93,7 +84,7 @@ For linear models:
       - Good -\> R^2 \~ 1
       - Bad -\> R^2 \~ 0
 
-## Coefficient of determination (R^2): Con
+## R^2 | Coefficient of determination: Con
 
   - can show very optimistic results when the y has large variance.
 
@@ -122,18 +113,54 @@ For linear models:
 
   - CCC penalizes R^2 for its bias (R^2 \* bias)
 
+## 
+
+# Measuring performance of discrete variables
+
+## Measuring performance of discrete variables
+
+Confusion matrix
+
+<img src=http://i.imgur.com/BzD94hW.png width=400>
+
+### Balanced: Accuracy
+
+Proportion of correctly predicted = correct / total
+
+### Imbalanced: Kappa
+
+Normalizes the error rate to what would be expected by chance.
+
+### Mozaic plot
+
+<img src=http://i.imgur.com/sWYDjOC.png width=760>
+
+### 2 classes
+
+#### Hard classes (1 or 0)
+
+  - Sensitivity (\#1\~1 / \#1) & Specificity (\#0\~0 / \#0)
+
+  - Precision (\#1\~1 / \#\~1) & recall = Sensitivity
+
+ASK: Mentions Bayesian statistics in “hard classes”, why?
+
+#### Soft classes (probability or 1)
+
+<img src=http://i.imgur.com/KTtXeEH.png width=760>
+
 # Appendix
 
 ## R^2 problem: my example
 
 ``` r
 library(tidyverse)
-#> ── Attaching packages ─── tidyverse 1.3.0 ──
+#> ── Attaching packages ────────── tidyverse 1.3.0 ──
 #> ✓ ggplot2 3.3.0           ✓ purrr   0.3.4      
 #> ✓ tibble  3.0.1           ✓ dplyr   0.8.99.9002
 #> ✓ tidyr   1.0.2           ✓ stringr 1.4.0      
 #> ✓ readr   1.3.1           ✓ forcats 0.5.0
-#> ── Conflicts ────── tidyverse_conflicts() ──
+#> ── Conflicts ───────────── tidyverse_conflicts() ──
 #> x dplyr::filter() masks stats::filter()
 #> x dplyr::lag()    masks stats::lag()
 
