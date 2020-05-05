@@ -107,7 +107,7 @@ For linear models:
 
 (I don’t get it)
 
-<img src=http://i.imgur.com/lMFSHw2.png width=760>
+<img src=http://i.imgur.com/lMFSHw2.png width=760/>
 
 ## Concordance Correlation Coefficient (CCC)
 
@@ -121,7 +121,7 @@ For linear models:
 
 Confusion matrix
 
-<img src=http://i.imgur.com/BzD94hW.png width=400>
+<img src=http://i.imgur.com/BzD94hW.png width=400/>
 
 ### Balanced: Accuracy
 
@@ -133,9 +133,22 @@ Normalizes the error rate to what would be expected by chance.
 
 ### Mozaic plot
 
-<img src=http://i.imgur.com/sWYDjOC.png width=760>
+<img src=http://i.imgur.com/sWYDjOC.png width=760/>
 
 ### 2 classes
+
+Takeaway:
+
+  - Forget about metrics based on hard class predictions
+
+  - Focus on the AUC (area under the curve) of ROC and precision-recall
+    to find a reasonable model.
+
+  - Then examine the curves carefully to find a reasonable cutoff.
+
+  - Finally use qualitative prediction metrics (whatever this means?)
+
+What follos next are details:
 
 #### Hard classes (1 or 0)
 
@@ -147,13 +160,81 @@ ASK: Mentions Bayesian statistics in “hard classes”, why?
 
 #### Soft classes (probability or 1)
 
-<img src=http://i.imgur.com/KTtXeEH.png width=760>
+<img src=http://i.imgur.com/KTtXeEH.png width=760/>
 
   - What probability cutoff should you use? It depends …
 
-### ROC (receiver operating characteristic) considers all possible cutoffs (see mozaic plot)
+#### ROC (receiver operating characteristic) considers all possible cutoffs (see mozaic plot)
 
 <img src=http://i.imgur.com/eLpWWYh.png width=760/>
+
+Area Under Curve (AUC):
+
+  - 1)  ROC \~0.84 (1 = best; 0.5 = worst)
+
+  - 2)  Precision-recall \~0.6 (1 = best; prevalence (0.18) = worst)
+
+### Context-specific metrics
+
+Careful\! How we measure the model’s performance depends on the question
+we want to answer.
+
+# Data splitting
+
+Commonly you would split the data in two:
+
+1.  A subset to “train” the model: i.e. to develop the model and the set
+    of features you should use.
+
+2.  A subset to “test” the model: i.e. to estimate if the model is good
+    or bad. **Do not use it before this final stage**.
+
+How much data should you put in each subset?
+
+  - It’s hard to say.
+
+  - Depends mostly on how many samples (n) you have relative to the
+    number of predictions (p) you want to make.
+
+  - No matter how large is your sample, best is for the number of
+    predictions to be lower. Else you are in trouble.
+
+How do you decide which samples to put where (train or test subset)?
+
+  - It’s most common to do it at random; but not alwasy is best.
+
+  - For discrete variables, select samples at random within each class
+    (i.e. “stratified random based on the outcome”).
+
+  - For numeric variables, first group the data in quartiles, then split
+    each quartile into train and test subsets, finally pool all train
+    and test groups. (Presumably at random ASK)
+
+Sometimes it’s best to sample non-randomly, e.g. when the data depends
+on time you may allocate the most recent data to the test set.
+
+# Resampling
+
+How can you know if a model is good before you even test it?
+
+<img src=http://i.imgur.com/P7CbKK7.png width=760/>
+
+It’s kind of the same thing but with different names. The answer is to
+“resample” (\~split) your data into (a) an analysis set (\~training)
+and (b) an assessment set (\~test).
+
+Tipes of resampling:
+
+  - V-Fold Cross-Validation and Its Variants
+  - Monte Carlo Cross-Validation
+  - The Bootstrap
+  - Rolling Origin Forecasting
+
+<img src=http://i.imgur.com/38UpN6M.png width=760/>
+
+<img src=http://i.imgur.com/crq23pt.png width=760/>
+
+<img src=http://i.imgur.com/pdjYhkW.png width=760/>
 
 # Appendix
 
@@ -161,12 +242,12 @@ ASK: Mentions Bayesian statistics in “hard classes”, why?
 
 ``` r
 library(tidyverse)
-#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
+#> ── Attaching packages ──────────────────────── tidyverse 1.3.0 ──
 #> ✓ ggplot2 3.3.0           ✓ purrr   0.3.4      
 #> ✓ tibble  3.0.1           ✓ dplyr   0.8.99.9002
 #> ✓ tidyr   1.0.2           ✓ stringr 1.4.0      
 #> ✓ readr   1.3.1           ✓ forcats 0.5.0
-#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+#> ── Conflicts ─────────────────────────── tidyverse_conflicts() ──
 #> x dplyr::filter() masks stats::filter()
 #> x dplyr::lag()    masks stats::lag()
 
