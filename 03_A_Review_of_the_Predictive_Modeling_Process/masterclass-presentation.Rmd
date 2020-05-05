@@ -143,6 +143,18 @@ Normalizes the error rate to what would be expected by chance.
 
 ### 2 classes
 
+Takeaway:
+
+* Forget about metrics based on hard class predictions
+
+* Focus on the AUC (area under the curve) of ROC and precision-recall to find a reasonable model.
+
+* Then examine the curves carefully to find a reasonable cutoff.
+
+* Finally use qualitative prediction metrics (whatever this means?)
+
+What follos next are details:
+
 #### Hard classes (1 or 0)
 
 * Sensitivity (#1~1 / #1) & Specificity (#0~0 / #0)
@@ -155,7 +167,44 @@ ASK: Mentions Bayesian statistics in "hard classes", why?
 
 <img src=http://i.imgur.com/KTtXeEH.png width=760>
 
-### ROC considers all possible cutoffs (see mozaic plot)
+* What probability cutoff should you use? It depends ...
+
+#### ROC (receiver operating characteristic) considers all possible cutoffs (see mozaic plot)
+
+<img src=http://i.imgur.com/eLpWWYh.png width=760/>
+
+Area Under Curve (AUC):
+
+* (a) ROC ~0.84 (1 = best; 0.5 = worst)
+* (b) Precision-recall ~0.6 (1 = best; prevalence (0.18) = worst)
+
+
+
+
+
+
+
+### Context-specific metrics
+
+Careful! How we measure the model's performance depends on the question we want to answer.
+
+# Data splitting
+
+Commonly you would split the data in two:
+
+1. A subset to "train" the model: i.e. to develop the model and the set of features you should use.
+
+2. A subset to "test" the model: i.e. to estimate if the model is good or bad. **Do not use it before this final stage**.
+
+How much data should you put in each subset? 
+
+* It's hard to say.
+
+* Depends mostly on how many samples (n) you have relative to the number of predictions (p) you want to make. 
+
+* No matter how large is your sample, best is for the number of predictions to be lower. Else you are in trouble.
+
+
 
 # Appendix 
 
