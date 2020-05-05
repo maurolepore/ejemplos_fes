@@ -204,7 +204,15 @@ How much data should you put in each subset?
 
 * No matter how large is your sample, best is for the number of predictions to be lower. Else you are in trouble.
 
+How do you decide which samples to put where (train or test subset)?
 
+* It's most common to do it at random; but not alwasy is best.
+
+* For discrete variables, select samples at random within each class (i.e. "stratified random based on the outcome").
+
+* For numeric variables, first group the data in quartiles, then split each quartile into train and test subsets, finally pool all train and test groups. (Presumably at random ASK)
+
+Sometimes it's best to sample non-randomly, e.g. when the data depends on time you may allocate the most recent data to the test set.
 
 # Appendix 
 
