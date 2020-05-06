@@ -302,6 +302,36 @@ For each of the 10-fold cross validation models, set K = 1, 2, … 201:
 
 <img src=http://i.imgur.com/B7WqU2I.png width=760/>
 
+## Feature Engineering Without Overfitting
+
+  - Always evaluate your design choices uwing an independent piece of
+    data.
+
+Do this e.g. when:
+
+  - Tuning models using resampling.
+  - Engineering new features
+  - Deciding on whether to include a new term into the model.
+
+<img src=http://i.imgur.com/woOsdpt.png width=760/>
+
+## Summary
+
+  - Explains the predictive modeling process before feature engineering.
+
+  - Use it as a guide to make good decisions, even before building a
+    model, e.g.:
+    
+      - How will you measure the model’s performance?
+      - How will you resample the data?
+      - How will you tune the model parameters.
+
+If you get this wrong, you’ll likely waste time and achieve poor
+results.
+
+In general, try to know as much as possible about: \* the data. \* the
+mechanism that generated the data. \* the questions you want to answer.
+
 # Appendix
 
 ## R^2 problem: my example
