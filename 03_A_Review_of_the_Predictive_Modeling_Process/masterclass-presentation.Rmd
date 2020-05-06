@@ -264,7 +264,37 @@ Takeaway:
 * When the training set is not large, use ~5 repeats of 10-fold cross-validation.
 
 
+## What Should Be Included Inside of Resampling?
 
+With a few exceptions, resampling must contain all of the steps in the modeling process that could significantly affect the model's effectiveness.
+
+## Tuning
+
+* Many models use important parameters that can't be estimated from the data.
+* Tune parameters to control model's complexity and any variance-base trade-off.
+
+E.g. , a simple K-nearest neighbors model requires the number of neighbors _K_.
+
+<img src=http://i.imgur.com/v6STgqz.png width=760/>
+
+## Model Optimization and Tuning
+
+You can search for the best tuning parameters in two main ways:
+
+* Determine the values incrementally. 
+
+* Predefine which values to evaluate ("grid search" and "random search"). e.g.:
+
+For each of the 10-fold cross validation models, set K = 1, 2, ... 201:
+
+<img src=http://i.imgur.com/04BbvL2.png width=760/>
+
+
+##  Comparing Models Using the Training Set
+
+* To fairly compare models use the training set and the same resamples 
+
+<img src=http://i.imgur.com/B7WqU2I.png width=760/>
 
 
 

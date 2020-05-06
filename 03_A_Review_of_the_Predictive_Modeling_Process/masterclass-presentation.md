@@ -253,18 +253,67 @@ ASK: So it’s kind of the same thing as resamplig above, right?
 
 <img src=http://i.imgur.com/IWILLUB.png width=760/>
 
+Takeaway:
+
+  - Simple V-fold cross-validation generally has most variance.
+
+  - Bootstrap generally has most bias but least variance.
+
+  - V-fold cross-validation inflates variance, but has low bias when V
+    is 10 or more.
+
+  - When the training set is not large, use \~5 repeats of 10-fold
+    cross-validation.
+
+## What Should Be Included Inside of Resampling?
+
+With a few exceptions, resampling must contain all of the steps in the
+modeling process that could significantly affect the model’s
+effectiveness.
+
+## Tuning
+
+  - Many models use important parameters that can’t be estimated from
+    the data.
+  - Tune parameters to control model’s complexity and any variance-base
+    trade-off.
+
+E.g. , a simple K-nearest neighbors model requires the number of
+neighbors *K*.
+
+<img src=http://i.imgur.com/v6STgqz.png width=760/>
+
+## Model Optimization and Tuning
+
+You can search for the best tuning parameters in two main ways:
+
+  - Determine the values incrementally.
+
+  - Predefine which values to evaluate (“grid search” and “random
+    search”). e.g.:
+
+For each of the 10-fold cross validation models, set K = 1, 2, … 201:
+
+<img src=http://i.imgur.com/04BbvL2.png width=760/>
+
+## Comparing Models Using the Training Set
+
+  - To fairly compare models use the training set and the same resamples
+
+<img src=http://i.imgur.com/B7WqU2I.png width=760/>
+
 # Appendix
 
 ## R^2 problem: my example
 
 ``` r
 library(tidyverse)
-#> ── Attaching packages ──────────────────────── tidyverse 1.3.0 ──
+#> ── Attaching packages ────────────────────────────────────────────────── tidyverse 1.3.0 ──
 #> ✓ ggplot2 3.3.0           ✓ purrr   0.3.4      
 #> ✓ tibble  3.0.1           ✓ dplyr   0.8.99.9002
 #> ✓ tidyr   1.0.2           ✓ stringr 1.4.0      
 #> ✓ readr   1.3.1           ✓ forcats 0.5.0
-#> ── Conflicts ─────────────────────────── tidyverse_conflicts() ──
+#> ── Conflicts ───────────────────────────────────────────────────── tidyverse_conflicts() ──
 #> x dplyr::filter() masks stats::filter()
 #> x dplyr::lag()    masks stats::lag()
 
