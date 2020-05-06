@@ -245,10 +245,27 @@ Resample the unit of data that is as statistically independent as possible from 
 
 A "validation set" is a small set of data you can use to estimate if your model is good while you train it, i.e. before you test it.
 
+ASK: So it's kind of the same thing as resamplig above, right?
+
 
 ## Variance and Bias in Resampling
 
 <img src=http://i.imgur.com/IWILLUB.png width=760/>
+
+
+Takeaway:
+
+* Simple V-fold cross-validation generally has most variance.
+
+* Bootstrap generally has most bias but least variance.
+
+* V-fold cross-validation inflates variance, but has low bias when V is 10 or more.
+
+* When the training set is not large, use ~5 repeats of 10-fold cross-validation.
+
+
+
+
 
 
 # Appendix 

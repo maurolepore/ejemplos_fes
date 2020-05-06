@@ -215,7 +215,7 @@ on time you may allocate the most recent data to the test set.
 
 # Resampling
 
-How can you know if a model is good before you even test it?
+## How can you know if a model is good before you even test it?
 
 <img src=http://i.imgur.com/P7CbKK7.png width=760/>
 
@@ -223,7 +223,13 @@ It’s kind of the same thing but with different names. The answer is to
 “resample” (\~split) your data into (a) an analysis set (\~training)
 and (b) an assessment set (\~test).
 
-Tipes of resampling:
+## What to resample?
+
+Resample the unit of data that is as statistically independent as
+possible from the other data, e.g. a customer along with all their
+purchases makes up to a single independent unit.
+
+## Tipes of resampling:
 
   - V-Fold Cross-Validation and Its Variants
   - Monte Carlo Cross-Validation
@@ -235,6 +241,17 @@ Tipes of resampling:
 <img src=http://i.imgur.com/crq23pt.png width=760/>
 
 <img src=http://i.imgur.com/pdjYhkW.png width=760/>
+
+## Validation sets
+
+A “validation set” is a small set of data you can use to estimate if
+your model is good while you train it, i.e. before you test it.
+
+ASK: So it’s kind of the same thing as resamplig above, right?
+
+## Variance and Bias in Resampling
+
+<img src=http://i.imgur.com/IWILLUB.png width=760/>
 
 # Appendix
 
