@@ -43,11 +43,79 @@ Try to know as much as possible about:
 
 # My opinion: Bad
 
-* It's hard to read.
+## It's hard to read
+
+This is  not only unclear but irritating:
+
+> When multiple models are in contention, there is often the need to have formal evaluations between them to understand if any differences in performance are above and beyond what one would expect at random.
+
+## Please don't be such a scientist!
+
+<img src=http://i.imgur.com/ePwTqhj.png width=760/>
+
+## Understand what the reader needs
+
+> If the reader is to grasp what the writer means, the writer must understand what the reader needs.
+
+-- [The Science of Scientific Writing, by George Gopen, Judith Swan](https://georgegopen.com/wp-content/uploads/2019/12/The-Science-of-Scientific-Writing-1.pdf)
+
+## It's hard to reproduce
+
+```{r}
+library(fs)
+library(purrr)
+```
+
+
+```{r}
+chapter_dir <- here::here("03_A_Review_of_the_Predictive_Modeling_Process")
+r_files <- fs::dir_ls(chapter_dir, regexp = "[.]R$")
+fs::path_file(r_files)
+```
+
+```{r, error=TRUE, message=FALSE}
+source(r_files[[1]])
+warnings()
+```
+
+```{r, error=TRUE, message=FALSE}
+source(r_files[[2]])
+warnings()
+```
+
+```{r, error=TRUE, message=FALSE}
+source(r_files[[3]])
+warnings()
+```
+
+## Sure I can get the files from Git's history, right?
+
+```{bash engine.path="/bin/bash"}
+git log --name-only | grep lm_date_only
+git log --name-only | grep okc_knn_keyword
+```
+
+```{bash engine.path="/bin/bash"}
+FILE='05_Encoding_Categorical_Predictors/5_06_Creating_Features_from_Text_Data/okc_knn_keyword.RData'
+
+git log -- $FILE
+```
+
+
+```{bash engine.path="/bin/bash"}
+git log 3f522d --stat -- $FILE
+```
 
 
 
-* It's hard (or impossible?) to reproduce.
+
+
+```{r}
+data <- "01_Introduction/1_03_A_More_Complex_Example/lm_date_only.RData"
+```
+
+
+
 
 ## My opinion
 
