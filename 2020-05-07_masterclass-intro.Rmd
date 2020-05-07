@@ -1,0 +1,74 @@
+---
+title: "Demo frustrado"
+output: ioslides_presentation
+---
+
+# A Review of the Predictive Modeling Process
+
+<http://www.feat.engineering/review-predictive-modeling-process.html>
+
+Mauro, `r Sys.Date()`
+
+## 
+
+* Resumen
+* Mi opinion
+* Demo frustrado
+
+# Resumen del capitulo
+
+## Cual es el objetivo?
+
+Entender el proceso de modelado predictiveo, antes de hacer "feature engineering".
+
+## Como usar el capitulo?
+
+Usalo para responder:
+
+* Como deberia medir el desempenho de un modelo?
+* Como deberia remuestrear los datos?
+* Como deberia "tunear" los parametros del modelo?
+
+Si que equivocas probablemente malgastes tu tiempo y consigas resultados malos.
+
+## Recomendacion principal
+
+Aprende tanto como puedas sobre:
+
+* los datos;
+* los mecanismos que generaron los datos;
+* las preguntas que queres responder.
+
+# Mi opinion
+
+## A favor: Claro y basado en experiencia
+
+## En contra: Usa lenguage complicado
+
+## 
+
+Original: 
+
+* _When multiple models are in contention_  
+* _there is often the need to have formal evaluations between them_  
+* _to understand if any differences in performance are above and beyond what one would expect at random._
+
+Mi revision:
+
+* When you fail to decide among multiple models  
+* you often need  
+* to understand if they perform better or worse than what you expect by chance.
+
+__Si esto no es lo que quizo decir el autor, justamente ese es el problema. La mala escritura confunde el mensaje.__
+
+## 
+
+### **Aprende lo que un lector necesita**
+
+> If the reader is to grasp what the writer means, the writer must understand what the reader needs.
+
+-- [The Science of Scientific Writing, by George Gopen, Judith Swan](https://georgegopen.com/wp-content/uploads/2019/12/The-Science-of-Scientific-Writing-1.pdf)
+
+## Es dificil (quizas imposible) de reproducir
+
+### Ir al demo frustrado >>>>>
