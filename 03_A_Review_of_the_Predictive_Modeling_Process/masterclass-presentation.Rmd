@@ -66,7 +66,6 @@ library(fs)
 library(purrr)
 ```
 
-
 ```{r}
 chapter_dir <- here::here("03_A_Review_of_the_Predictive_Modeling_Process")
 r_files <- fs::dir_ls(chapter_dir, regexp = "[.]R$")
@@ -88,45 +87,70 @@ source(r_files[[3]])
 warnings()
 ```
 
-## Sure I can get the files from Git's history, right?
+## Search for missing data in Git's log
+
+No luck.
 
 ```{bash engine.path="/bin/bash"}
-git log --name-only | grep lm_date_only
-git log --name-only | grep okc_knn_keyword
+LM_DATE_ONLY="01_Introduction/1_03_A_More_Complex_Example/lm_date_only.RData"
+git log --name-only -- $LM_DATE_ONLY
 ```
+
+Found this one!
 
 ```{bash engine.path="/bin/bash"}
-FILE='05_Encoding_Categorical_Predictors/5_06_Creating_Features_from_Text_Data/okc_knn_keyword.RData'
-
-git log -- $FILE
+OKC_KNN_KEYWORD="05_Encoding_Categorical_Predictors/5_06_Creating_Features_from_Text_Data//okc_knn_keyword.RData"
+git log --name-only -- $OKC_KNN_KEYWORD
 ```
 
-
-```{bash engine.path="/bin/bash"}
-git log 3f522d --stat -- $FILE
-```
-
-
-
-
+## Rerun with found data
 
 ```{r}
-data <- "01_Introduction/1_03_A_More_Complex_Example/lm_date_only.RData"
+patched_file <- fs::path(here::here(
+  "03_A_Review_of_the_Predictive_Modeling_Process", 
+  "03_06_Model_Optimization_and_Tuning_FIXME.R"
+))
 ```
 
+```r
+# Load pre-computed model results for OkC data
+load(
+  file.path(
+    # FIXME: Restore missing data where the scripts expect it
+    # "..",
+    # "05_Encoding_Categorical_Predictors",
+    # "5_06_Creating_Features_from_Text_Data/",
+    "okc_knn_keyword.RData"
+  )
+)
+```
 
+```{r, error=TRUE, message=FALSE}
+source(patched_file)
+warnings()
+```
 
+I give up.
 
-## My opinion
+# Conclusion
+
+## 1. Understand the predictive modeling process
+
+## 2. Speak like a human
+
+`curl https://api.github.com/octocat`
 
 <img src=http://i.imgur.com/b5PwJd5.png width=760/>
 
-## My opinion
+## 3. Fight the reproducibility crisis
 
-<img src=https://user-images.githubusercontent.com/5856545/81304327-8a415480-9042-11ea-9550-11e4f225bd2d.png width=760/>
+<https://en.wikipedia.org/wiki/Replication_crisis>
 
 
-# My opinion: Good
+
+
+
+
 
 
 
