@@ -6,11 +6,21 @@ output: github_document
 
 # [A Review of the Predictive Modeling Process](http://www.feat.engineering/review-predictive-modeling-process.html)
 
-## Summary
+# Outline
 
-* Explains the predictive modeling process before feature engineering.
+* Summary
+* My opinion
+* Demo-ish
 
-Use it as a guide to make good decisions, even before building a model, e.g.:
+# Summary
+
+## Goal
+
+Understand the predictive modeling process before feature engineering.
+
+## How to use this chapter
+
+Use it as a guide to answer questions like these:
 
 * How will you measure the model's performance?
 * How will you resample the data?
@@ -18,12 +28,37 @@ Use it as a guide to make good decisions, even before building a model, e.g.:
 
 If you get this wrong, you'll likely waste time and achieve poor results.
 
-In general, try to know as much as possible about:
+## Main takeaways
 
-* the data.
-* the mechanism that generated the data.
+Try to know as much as possible about:
+
+* the data;
+* the mechanism that generated the data;
 * the questions you want to answer.
-  
+
+# My opinion: Good
+
+* Exposes important concepts
+* Shares real-world experience
+
+# My opinion: Bad
+
+* It's hard to read.
+
+
+
+* It's hard (or impossible?) to reproduce.
+
+## My opinion
+
+<img src=http://i.imgur.com/b5PwJd5.png width=760/>
+
+## My opinion
+
+<img src=https://user-images.githubusercontent.com/5856545/81304327-8a415480-9042-11ea-9550-11e4f225bd2d.png width=760/>
+
+
+# My opinion: Good
 
 
 

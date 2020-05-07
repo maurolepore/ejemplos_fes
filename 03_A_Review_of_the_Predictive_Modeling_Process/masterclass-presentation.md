@@ -2,7 +2,16 @@ Chapter 3
 ================
 Mauro
 
-# [A Review of the Predictive Modeling Process](http://www.feat.engineering/review-predictive-modeling-process.html)
+[A Review of the Predictive Modeling
+Process](http://www.feat.engineering/review-predictive-modeling-process.html)
+
+## Outline
+
+  - Summary
+  - Demo-ish
+  - My opinion
+
+# Summary
 
 ## Summary
 
@@ -23,6 +32,24 @@ In general, try to know as much as possible about:
   - the data.
   - the mechanism that generated the data.
   - the questions you want to answer.
+
+## Demo-ish
+
+# My opinion
+
+  - Great concepts
+  - Poor writting
+  - Not reproducible
+
+## My opinion
+
+<img src=http://i.imgur.com/b5PwJd5.png width=760/>
+
+## My opinion
+
+<img src=https://user-images.githubusercontent.com/5856545/81304327-8a415480-9042-11ea-9550-11e4f225bd2d.png width=760/>
+
+# My opinion: Good
 
 ## Overview
 
@@ -339,12 +366,12 @@ Do this e.g. when:
 
 ``` r
 library(tidyverse)
-#> ── Attaching packages ────────────────────────────────────────────────── tidyverse 1.3.0 ──
+#> ── Attaching packages ──────────────────── tidyverse 1.3.0 ──
 #> ✓ ggplot2 3.3.0           ✓ purrr   0.3.4      
 #> ✓ tibble  3.0.1           ✓ dplyr   0.8.99.9002
 #> ✓ tidyr   1.0.2           ✓ stringr 1.4.0      
 #> ✓ readr   1.3.1           ✓ forcats 0.5.0
-#> ── Conflicts ───────────────────────────────────────────────────── tidyverse_conflicts() ──
+#> ── Conflicts ─────────────────────── tidyverse_conflicts() ──
 #> x dplyr::filter() masks stats::filter()
 #> x dplyr::lag()    masks stats::lag()
 
