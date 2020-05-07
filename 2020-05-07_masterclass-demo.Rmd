@@ -53,15 +53,20 @@ try(source(r_files[[3]]))
 No hay registro de lm_date_only.RData.
 
 ```{bash engine.path="/bin/bash"}
-LM="01_Introduction/1_03_A_More_Complex_Example/lm_date_only.RData"
-git log --name-only -- $LM
+git log --name-only | grep lm_date_only 
 ```
 
 okc_knn_keyword.RData aparece en un par de commits.
 
 ```{bash engine.path="/bin/bash"}
-OKC="05_Encoding_Categorical_Predictors/5_06_Creating_Features_from_Text_Data/okc_knn_keyword.RData"
-git log --name-only -- $OKC
+git log --name-only | grep okc_knn_keyword 
+```
+
+(Ignore the first file. Who put it there was me.)
+
+
+```{bash engine.path="/bin/bash"}
+okc="05_Encoding_Categorical_Predictors/05_06_Creating_Features_from_Text_Data/okc_knn_keyword.RData"
 ```
 
 
