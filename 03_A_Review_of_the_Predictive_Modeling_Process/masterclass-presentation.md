@@ -2,9 +2,27 @@ Chapter 3
 ================
 Mauro
 
-# A Review of the Predictive Modeling Process
+# [A Review of the Predictive Modeling Process](http://www.feat.engineering/review-predictive-modeling-process.html)
 
-<http://www.feat.engineering/review-predictive-modeling-process.html>
+## Summary
+
+  - Explains the predictive modeling process before feature engineering.
+
+Use it as a guide to make good decisions, even before building a model,
+e.g.:
+
+  - How will you measure the model’s performance?
+  - How will you resample the data?
+  - How will you tune the model parameters.
+
+If you get this wrong, you’ll likely waste time and achieve poor
+results.
+
+In general, try to know as much as possible about:
+
+  - the data.
+  - the mechanism that generated the data.
+  - the questions you want to answer.
 
 ## Overview
 
@@ -314,23 +332,6 @@ Do this e.g. when:
   - Deciding on whether to include a new term into the model.
 
 <img src=http://i.imgur.com/woOsdpt.png width=760/>
-
-## Summary
-
-  - Explains the predictive modeling process before feature engineering.
-
-  - Use it as a guide to make good decisions, even before building a
-    model, e.g.:
-    
-      - How will you measure the model’s performance?
-      - How will you resample the data?
-      - How will you tune the model parameters.
-
-If you get this wrong, you’ll likely waste time and achieve poor
-results.
-
-In general, try to know as much as possible about: \* the data. \* the
-mechanism that generated the data. \* the questions you want to answer.
 
 # Appendix
 
