@@ -1,0 +1,104 @@
+---
+title: "Chapter 3"
+output: github_document
+---
+
+# [A Review of the Predictive Modeling Process](http://www.feat.engineering/review-predictive-modeling-process.html)
+
+Mauro, `r Sys.Date()`
+
+## Configuraciones
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  error = TRUE
+)
+```
+
+```{r}
+library(fs)
+library(here)
+```
+
+## Busco archivos fuente
+
+```{r}
+chapter_dir <- here::here("03_A_Review_of_the_Predictive_Modeling_Process")
+r_files <- fs::dir_ls(chapter_dir, regexp = "[.]R$")
+fs::path_file(r_files)
+```
+
+(Por ahora ignoremos *FIXME.R)
+
+## Intento correr cada archivo
+
+```{r}
+try(source(r_files[[1]]))
+```
+
+```{r}
+try(source(r_files[[2]]))
+```
+
+```{r}
+try(source(r_files[[3]]))
+```
+
+## Busco datos faltantes en .git
+
+No hay registro de lm_date_only.RData.
+
+```{bash engine.path="/bin/bash"}
+git log --name-only | grep lm_date_only 
+```
+
+okc_knn_keyword.RData aparece en un par de commits.
+
+```{bash engine.path="/bin/bash"}
+git log --name-only | grep okc_knn_keyword 
+```
+
+(Ignore the first file. Who put it there was me.)
+
+
+```{bash engine.path="/bin/bash"}
+okc="05_Encoding_Categorical_Predictors/05_06_Creating_Features_from_Text_Data/okc_knn_keyword.RData"
+```
+
+
+
+
+## Rerun with found data
+
+```{r}
+patched_file <- fs::path(here::here(
+  "03_A_Review_of_the_Predictive_Modeling_Process", 
+  "03_06_Model_Optimization_and_Tuning_FIXME.R"
+))
+```
+
+```r
+# Load pre-computed model results for OkC data
+load(
+  file.path(
+    # FIXME: Restore missing data where the scripts expect it
+    # "..",
+    # "05_Encoding_Categorical_Predictors",
+    # "5_06_Creating_Features_from_Text_Data/",
+    "okc_knn_keyword.RData"
+  )
+)
+```
+
+```{r, error=TRUE, message=FALSE}
+try(source(patched_file))
+```
+
+I give up.
+
+
+
