@@ -9,27 +9,23 @@ output: ioslides_presentation
 
 Mauro, `r Sys.Date()`
 
-## 
-
-* Resumen
-* Mi opinion
-* Demo frustrado
+`(1) Resumen (2) Mi opinion (3) Demo`
 
 # Resumen del capitulo
 
 ## Cual es el objetivo?
 
-Entender el proceso de modelado predictiveo, antes de hacer "feature engineering".
+###  Entender el proceso de modelado predictivo, antes de hacer "feature engineering".
 
 ## Como usar el capitulo?
 
-Usalo para responder:
+Usarlo para responder:
 
-* Como deberia medir el desempenho de un modelo?
+* Como deberia medir el desempeno de un modelo?
 * Como deberia remuestrear los datos?
 * Como deberia "tunear" los parametros del modelo?
 
-Si que equivocas probablemente malgastes tu tiempo y consigas resultados malos.
+Si te equivocas, probablemente malgastes tiempo y consigas resultados malos.
 
 ## Recomendacion principal
 
@@ -71,4 +67,4 @@ __Si esto no es lo que quizo decir el autor, justamente ese es el problema. La m
 
 ## Es dificil (quizas imposible) de reproducir
 
-### Ir al demo frustrado >>>>>
+### Ir al demo frustrado

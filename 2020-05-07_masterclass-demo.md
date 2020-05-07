@@ -5,11 +5,15 @@ Chapter 3
 
 Mauro, 2020-05-07
 
+## Configuraciones
+
 ``` r
 library(fs)
 library(here)
 #> here() starts at /home/mauro/git/ejemplos_fes
 ```
+
+## Busco archivos fuente
 
 ``` r
 chapter_dir <- here::here("03_A_Review_of_the_Predictive_Modeling_Process")
@@ -21,31 +25,60 @@ fs::path_file(r_files)
 #> [4] "03_06_Model_Optimization_and_Tuning_FIXME.R"
 ```
 
+(Por ahora ignoremos \*FIXME.R)
+
+## Intento correr cada archivo
+
 ``` r
-source(r_files[[1]])
+try(source(r_files[[1]]))
+#> ── Attaching packages ────────
+#> ✓ broom     0.5.6           ✓ recipes   0.1.12     
+#> ✓ dials     0.0.6           ✓ rsample   0.0.6      
+#> ✓ dplyr     0.8.99.9002     ✓ tibble    3.0.1      
+#> ✓ ggplot2   3.3.0           ✓ tune      0.1.0      
+#> ✓ infer     0.5.1           ✓ workflows 0.1.1      
+#> ✓ parsnip   0.1.0           ✓ yardstick 0.0.6      
+#> ✓ purrr     0.3.4
+#> ── Conflicts ─────────────────
+#> x purrr::discard()  masks scales::discard()
+#> x dplyr::filter()   masks stats::filter()
+#> x dplyr::lag()      masks stats::lag()
+#> x ggplot2::margin() masks dials::margin()
+#> x recipes::step()   masks stats::step()
+#> 
+#> Attaching package: 'gridExtra'
+#> The following object is masked from 'package:dplyr':
+#> 
+#>     combine
 #> Warning in readChar(con, 5L, useBytes = TRUE): cannot open compressed file '../
 #> 01_Introduction/1_03_A_More_Complex_Example/lm_date_only.RData', probable reason
 #> 'No such file or directory'
-#> Error in readChar(con, 5L, useBytes = TRUE): cannot open the connection
-warnings()
+#> Error in readChar(con, 5L, useBytes = TRUE) : cannot open the connection
 ```
 
 ``` r
-source(r_files[[2]])
+try(source(r_files[[2]]))
 #> Warning in readChar(con, 5L, useBytes = TRUE): cannot open compressed file '../
 #> 05_Encoding_Categorical_Predictors/5_06_Creating_Features_from_Text_Data//
 #> okc_glm_keyword.RData', probable reason 'No such file or directory'
-#> Error in readChar(con, 5L, useBytes = TRUE): cannot open the connection
-warnings()
+#> Error in readChar(con, 5L, useBytes = TRUE) : cannot open the connection
 ```
 
 ``` r
-source(r_files[[3]])
+try(source(r_files[[3]]))
+#> Loading required package: lattice
+#> 
+#> Attaching package: 'caret'
+#> The following objects are masked from 'package:yardstick':
+#> 
+#>     precision, recall, sensitivity, specificity
+#> The following object is masked from 'package:purrr':
+#> 
+#>     lift
 #> Warning in readChar(con, 5L, useBytes = TRUE): cannot open compressed file '../
 #> 05_Encoding_Categorical_Predictors/5_06_Creating_Features_from_Text_Data//
 #> okc_mlp_keyword.RData', probable reason 'No such file or directory'
-#> Error in readChar(con, 5L, useBytes = TRUE): cannot open the connection
-warnings()
+#> Error in readChar(con, 5L, useBytes = TRUE) : cannot open the connection
 ```
 
 ## Search for missing data in Git’s log
